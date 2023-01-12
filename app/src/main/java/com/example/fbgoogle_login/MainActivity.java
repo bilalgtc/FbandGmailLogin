@@ -19,8 +19,10 @@ import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.login.LoginBehavior;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     CallbackManager callbackManager;
     GoogleSignInOptions options;
     GoogleSignInClient client;
+
     Context pContext;
 
     @Override
@@ -46,9 +49,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
-        fb=findViewById(R.id.facebook_btn);
-        google=findViewById(R.id.google_btn);
+        fb = findViewById(R.id.facebook_btn);
+        google = findViewById(R.id.google_btn);
+        LoginButton button = (LoginButton) findViewById(R.id.facebook_btn);
+        button.setReadPermissions(Arrays.asList("EMAIL"));
 
 //
 //        try {
@@ -64,64 +68,87 @@ public class MainActivity extends AppCompatActivity {
 //        } catch (Exception e) {
 //            Log.e(TAG, "printHashKey()", e);
 //        }
+        LoginBehavior mLoginBehavior = LoginBehavior.DIALOG_ONLY;
+        button.setLoginBehavior(mLoginBehavior);
 
 
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
-         if (accessToken != null && !accessToken.isExpired()){
-             startActivity(new Intent(MainActivity.this,MainActivity2.class));
-             finish();
-         }
+        if (accessToken != null && !accessToken.isExpired()) {
+            startActivity(new Intent(MainActivity.this, MainActivity2.class));
+            finish();
+        }
 
         options = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         client = GoogleSignIn.getClient(this, options);
 
         callbackManager = CallbackManager.Factory.create();
 
-        google.setOnClickListener(new View.OnClickListener() {
+//        google.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                sinin();
+//            }
+//
+//
+//        });
+
+
+        button.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
-            public void onClick(View v) {
-                sinin();
+            public void onSuccess(LoginResult loginResult) {
+                startActivity(new Intent(MainActivity.this, MainActivity2.class));
+                finish();
+                // App code
             }
 
-
-        });
-
-        LoginManager.getInstance().registerCallback(callbackManager,
-                new FacebookCallback<LoginResult>() {
-                    @Override
-                    public void onSuccess(LoginResult loginResult) {
-                        startActivity(new Intent(MainActivity.this,MainActivity2.class));
-                        finish();
-                    }
-
-                    @Override
-                    public void onCancel() {
-                        // App code
-                    }
-
-                    @Override
-                    public void onError(FacebookException exception) {
-                        // App code
-                        exception.printStackTrace();
-                    }
-                });
-
-        fb.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onCancel() {
+                // App code
+            }
 
-
-//                printHashKey(MainActivity.this);
-                LoginManager.getInstance().logInWithReadPermissions(MainActivity.this, Arrays.asList("public_profile"));
+            @Override
+            public void onError(FacebookException exception) {
+                // App code
             }
         });
-    }
 
 
+//        LoginManager.getInstance().registerCallback(callbackManager,
+//                new FacebookCallback<LoginResult>() {
+//                    @Override
+//                    public void onSuccess(LoginResult loginResult) {
+//                        startActivity(new Intent(MainActivity.this,MainActivity2.class));
+//                        finish();
+//                    }
+//
+//                    @Override
+//                    public void onCancel() {
+//                        // App code
+//                    }
+//
+//                    @Override
+//                    public void onError(FacebookException exception) {
+//                        // App code
+//                        exception.printStackTrace();
+//                    }
+//                });
 
-    private void sinin() {
-        Intent signinIntent = client.getSignInIntent();
-        startActivityForResult(signinIntent, 1000);
+//        fb.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//
+////                printHashKey(MainActivity.this);
+//                LoginManager.getInstance().logInWithReadPermissions(MainActivity.this, Arrays.asList("public_profile"));
+//            }
+//        });
+//    }
+
+
+//    private void sinin() {
+//        Intent signinIntent = client.getSignInIntent();
+//        startActivityForResult(signinIntent, 1000);
+//    }
     }
 
     @Override

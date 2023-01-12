@@ -20,152 +20,159 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.13999999" />
 
-    <LinearLayout
+<!--    <LinearLayout-->
+<!--        android:id="@+id/facebook_btn"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/_36sdp"-->
+<!--        android:layout_marginStart="@dimen/_40sdp"-->
+<!--        android:layout_marginTop="@dimen/_50sdp"-->
+<!--        android:layout_marginEnd="@dimen/_40sdp"-->
+<!--        android:background="@drawable/btn2_style"-->
+<!--        android:gravity="center"-->
+<!--        android:orientation="horizontal"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/reg_txt1">-->
+
+    <com.facebook.login.widget.LoginButton
         android:id="@+id/facebook_btn"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_36sdp"
-        android:layout_marginStart="@dimen/_40sdp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_50sdp"
-        android:layout_marginEnd="@dimen/_40sdp"
-        android:background="@drawable/btn2_style"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reg_txt1">
+        app:layout_constraintTop_toBottomOf="@+id/reg_txt1" />
 
 
-        <ImageView
-            android:layout_width="@dimen/_18sdp"
-            android:layout_height="@dimen/_18sdp"
-            android:layout_gravity="center"
-            android:layout_marginEnd="@dimen/_11sdp"
-            android:src="@drawable/fb_icon" />
+<!--            <ImageView-->
+<!--                android:layout_width="@dimen/_18sdp"-->
+<!--                android:layout_height="@dimen/_18sdp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginEnd="@dimen/_11sdp"-->
+<!--                android:src="@drawable/fb_icon" />-->
+<!--    -->
+<!--    -->
+<!--            <TextView-->
+<!--                android:id="@+id/reg_txt2"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:text="Continue with "-->
+<!--                android:textAllCaps="false"-->
+<!--                android:textColor="#4552CB"-->
+<!--                android:textSize="@dimen/_12sdp" />-->
+<!--            <TextView-->
+<!--                android:id="@+id/reg_txt4"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:text="Facebook"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:textColor="#4552CB"-->
+<!--                android:textSize="@dimen/_12sdp" />-->
+<!--    -->
+<!--    -->
+<!--        </LinearLayout>-->
+<!--    -->
+
+        <LinearLayout
+            android:id="@+id/google_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_36sdp"
+            android:layout_marginStart="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_40sdp"
+            android:background="@drawable/btn2_style"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/facebook_btn"
+            app:layout_constraintStart_toStartOf="@+id/facebook_btn"
+            app:layout_constraintTop_toBottomOf="@+id/facebook_btn">
 
 
-        <TextView
-            android:id="@+id/reg_txt2"
-            android:layout_width="wrap_content"
+            <ImageView
+                android:layout_width="@dimen/_17sdp"
+                android:layout_height="@dimen/_17sdp"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/_11sdp"
+                android:src="@drawable/googleicon" />
+
+
+            <TextView
+                android:id="@+id/reg_txt3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:text="Continue with "
+                android:textAllCaps="false"
+                android:textColor="#4552CB"
+                android:textSize="@dimen/_12sdp" />
+
+            <TextView
+                android:id="@+id/reg_txt5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:text="Google"
+                android:textStyle="bold"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:textAllCaps="false"
+                android:textColor="#4552CB"
+                android:textSize="@dimen/_12sdp" />
+
+
+
+        </LinearLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/registerEmailbtn"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center_vertical"
-            android:text="Continue with "
+            android:layout_marginStart="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_48sdp"
+            android:layout_marginEnd="@dimen/_40sdp"
+            android:text="Register with Email"
+            android:background="@drawable/button_ripple"
             android:textAllCaps="false"
-            android:textColor="#4552CB"
-            android:textSize="@dimen/_12sdp" />
-        <TextView
-            android:id="@+id/reg_txt4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center_vertical"
-            android:text="Facebook"
-            android:textStyle="bold"
-            android:textAllCaps="false"
-            android:textColor="#4552CB"
-            android:textSize="@dimen/_12sdp" />
-
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/google_btn"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_36sdp"
-        android:layout_marginStart="@dimen/_40sdp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:layout_marginEnd="@dimen/_40sdp"
-        android:background="@drawable/btn2_style"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="@+id/facebook_btn"
-        app:layout_constraintStart_toStartOf="@+id/facebook_btn"
-        app:layout_constraintTop_toBottomOf="@+id/facebook_btn">
-
-
-        <ImageView
-            android:layout_width="@dimen/_17sdp"
-            android:layout_height="@dimen/_17sdp"
-            android:layout_gravity="center"
-            android:layout_marginEnd="@dimen/_11sdp"
-            android:src="@drawable/googleicon" />
-
-
-        <TextView
-            android:id="@+id/reg_txt3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center_vertical"
-            android:text="Continue with "
-            android:textAllCaps="false"
-            android:textColor="#4552CB"
-            android:textSize="@dimen/_12sdp" />
-
-        <TextView
-            android:id="@+id/reg_txt5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center_vertical"
-            android:text="Google"
-            android:textStyle="bold"
-            android:layout_marginEnd="@dimen/_15sdp"
-            android:textAllCaps="false"
-            android:textColor="#4552CB"
-            android:textSize="@dimen/_12sdp" />
-
-
-
-    </LinearLayout>
-
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/registerEmailbtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_40sdp"
-        android:layout_marginTop="@dimen/_48sdp"
-        android:layout_marginEnd="@dimen/_40sdp"
-        android:text="Register with Email"
-        android:background="@drawable/button_ripple"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_12sdp"
-        app:layout_constraintEnd_toEndOf="@+id/google_btn"
-        app:layout_constraintStart_toStartOf="@+id/google_btn"
-        app:layout_constraintTop_toBottomOf="@+id/google_btn" />
-
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerEmailbtn"
-        app:layout_constraintVertical_bias="0.35000002">
-
-        <TextView
-            android:id="@+id/regfb_txt1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Already have an account? "
             android:textColor="@color/white"
-            android:textSize="@dimen/_13ssp" />
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintEnd_toEndOf="@+id/google_btn"
+            app:layout_constraintStart_toStartOf="@+id/google_btn"
+            app:layout_constraintTop_toBottomOf="@+id/google_btn" />
 
-        <TextView
-            android:id="@+id/regfb_txt2"
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign In"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_13ssp" />
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/registerEmailbtn"
+            app:layout_constraintVertical_bias="0.35000002">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/regfb_txt1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Already have an account? "
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13ssp" />
+
+            <TextView
+                android:id="@+id/regfb_txt2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign In"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13ssp" />
+
+        </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
