@@ -3,9 +3,9 @@
     <string name="welcome_to">Welcome\t\t\t\nto Pet Care</string>
 
 
-    <string name="facebook_app_id">715947450185052</string>
-    <string name="fb_login_protocol_scheme">fb715947450185052</string>
-    <string name="facebook_client_token">5f297570dc891c89a734d9507802ae95</string>
+    <string name="facebook_app_id">1189054362005400</string>
+    <string name="fb_login_protocol_scheme">fb1189054362005400</string>
+    <string name="facebook_client_token">61c3ed13f4765ec45a5dd85f68cfa9a6</string>
 
 
 </resources>
