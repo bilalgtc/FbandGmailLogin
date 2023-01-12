@@ -1,7 +1,10 @@
 package com.example.fbgoogle_login;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -17,6 +20,7 @@ import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -36,27 +40,32 @@ public class MainActivity extends AppCompatActivity {
     CallbackManager callbackManager;
     GoogleSignInOptions options;
     GoogleSignInClient client;
+    Context pContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         fb=findViewById(R.id.facebook_btn);
         google=findViewById(R.id.google_btn);
 
-        try {
-            PackageInfo info = getPackageManager().getPackageInfo(
-                    " com.example.fbgoogle_login",
-                    PackageManager.GET_SIGNATURES);
-            for (Signature signature : info.signatures) {
-                MessageDigest md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
-                Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
-            }
-        }
-        catch (PackageManager.NameNotFoundException | NoSuchAlgorithmException e) {
-        }
+//
+//        try {
+//            PackageInfo info = pContext.getPackageManager().getPackageInfo(pContext.getPackageName(), PackageManager.GET_SIGNATURES);
+//            for (Signature signature : info.signatures) {
+//                MessageDigest md = MessageDigest.getInstance("SHA");
+//                md.update(signature.toByteArray());
+//                String hashKey = new String(Base64.encode(md.digest(), 0));
+//                Log.i(TAG, "printHashKey() Hash Key: " + hashKey);
+//            }
+//        } catch (NoSuchAlgorithmException e) {
+//            Log.e(TAG, "printHashKey()", e);
+//        } catch (Exception e) {
+//            Log.e(TAG, "printHashKey()", e);
+//        }
 
 
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
@@ -104,9 +113,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-
+//                printHashKey(MainActivity.this);
                 LoginManager.getInstance().logInWithReadPermissions(MainActivity.this, Arrays.asList("public_profile"));
-
             }
         });
     }
@@ -141,5 +149,21 @@ public class MainActivity extends AppCompatActivity {
         finish();
         Intent intent = new Intent(MainActivity.this,MainActivity2.class);
         startActivity(intent);
+    }
+
+    public static void printHashKey(Context pContext) {
+        try {
+            PackageInfo info = pContext.getPackageManager().getPackageInfo(pContext.getPackageName(), PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                String hashKey = new String(Base64.encode(md.digest(), 0));
+                Log.i("KeyHash", "printHashKey() Hash Key: " + hashKey);
+            }
+        } catch (NoSuchAlgorithmException e) {
+            Log.e("KeyHash", "printHashKey()", e);
+        } catch (Exception e) {
+            Log.e("KeyHash", "printHashKey()", e);
+        }
     }
 }
