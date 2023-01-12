@@ -55,11 +55,8 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
             }
         }
-        catch (PackageManager.NameNotFoundException e) {
+        catch (PackageManager.NameNotFoundException | NoSuchAlgorithmException e) {
         }
-        catch (NoSuchAlgorithmException e) {
-        }
-
 
 
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
